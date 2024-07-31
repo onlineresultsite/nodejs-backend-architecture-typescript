@@ -1,0 +1,18 @@
+name: Trigger Django_coffeeshop Workflow
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name if necessary
+
+jobs:
+  trigger_workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Dispatch workflow in Django_coffeeshop
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PAT_TOKEN }}  # Personal Access Token (PAT) with repo scope
+          repository: onlineresultsite/Django_coffeeshop  # Replace with your Django_coffeeshop repository
+          event-type: deploy-django
